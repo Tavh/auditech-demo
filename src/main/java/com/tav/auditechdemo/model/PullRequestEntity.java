@@ -19,7 +19,7 @@ public class PullRequestEntity {
 
     @Column(name="title", nullable=false)
     private String title;
-    @Column(name="github_id", nullable=false)
+    @Column(name="github_id", nullable=false, unique=true)
     private String githubId;
     @Column(name="url", nullable=false)
     private String url;
