@@ -1,0 +1,9 @@
+server:
+  port: 5000
+
+spring:
+  application:
+    name: auditech-demo
+  data:
+    mongodb:
+      uri: mongodb://localhost:37017/pull_request_tracker
