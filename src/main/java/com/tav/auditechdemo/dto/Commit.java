@@ -1,4 +1,4 @@
-package com.tav.auditechdemo.dto.payload;
+package com.tav.auditechdemo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class Payload {
-    private String id;
+public class Commit {
+    private String message;
 }

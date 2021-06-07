@@ -1,4 +1,6 @@
 server:
+  servlet:
+    context-path: /auditech-demo
   port: 5000
 
 spring:
@@ -14,7 +16,7 @@ spring:
     platform: mysql
     url: jdbc:mysql://localhost:3306/auditech_demo
     username: root
-    password: ${SQL_PASSWORD}
+    password: Srduicukzh1
     driverClassName: com.mysql.cj.jdbc.Driver
 
 
