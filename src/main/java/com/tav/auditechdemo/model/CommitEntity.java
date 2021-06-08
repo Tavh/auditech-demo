@@ -16,9 +16,6 @@ public class CommitEntity {
     @GeneratedValue
     private long id;
 
-    @ManyToOne
-    private PullRequestEntity pullRequest;
-
     @Column(name = "message", nullable = false)
     private String message;
 }

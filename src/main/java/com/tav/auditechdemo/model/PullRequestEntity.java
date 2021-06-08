@@ -4,14 +4,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.With;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "pull_requests")
+@With
 public class PullRequestEntity {
     @Id
     @GeneratedValue
@@ -27,4 +30,7 @@ public class PullRequestEntity {
     private String number;
     @Column(name="action", nullable=false)
     private String action;
+    @OneToMany(cascade=CascadeType.ALL)
+    @Column(name="commits", nullable=false)
+    private List<CommitEntity> commits;
 }

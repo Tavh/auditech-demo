@@ -14,8 +14,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.lang.reflect.Array;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -28,16 +31,19 @@ public class PullRequestService {
     private final RestTemplate restTemplate;
 
     public void createPullRequest(PullRequestEvent pullRequestEvent) {
-        PullRequestEntity pullRequestEntity = githubMapper.pullRequestPayloadToPullRequestEntity(pullRequestEvent);
-        pullRequestRepository.save(pullRequestEntity);
         ResponseEntity<CommitWrapper[]> response = restTemplate.getForEntity(
                 URI.create(pullRequestEvent.getLinks().getCommitsUrl()),
                 CommitWrapper[].class
         );
-
+        PullRequestEntity pullRequestEntity = githubMapper.pullRequestPayloadToPullRequestEntity(pullRequestEvent).withCommits(new ArrayList<>());
         Optional.ofNullable(response.getBody()).ifPresentOrElse(commitWrappers -> Arrays.stream(commitWrappers).forEach(commitWrapper ->
-                    commitRepository.save(githubMapper.commitToCommitEntity(commitWrapper.getCommit(), pullRequestEntity)
+                    pullRequestEntity.getCommits().add(githubMapper.commitToCommitEntity(commitWrapper.getCommit())
                 )
         ), () -> { throw new NoCommitsFoundException(pullRequestEntity.getNumber()); });
+        pullRequestRepository.save(pullRequestEntity);
+    }
+
+    public List<PullRequestEntity> getAllPullRequests() {
+        return pullRequestRepository.findAll();
     }
 }

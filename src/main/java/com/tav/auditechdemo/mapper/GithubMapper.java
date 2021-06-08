@@ -17,6 +17,5 @@ public interface GithubMapper {
     @Mapping(target="number", source="pullRequestPayload.number")
     PullRequestEntity pullRequestPayloadToPullRequestEntity(PullRequestEvent pullRequestEvent);
 
-    @Mapping(target="pullRequest", source="pullRequest")
-    CommitEntity commitToCommitEntity(Commit commit, PullRequestEntity pullRequest);
+    CommitEntity commitToCommitEntity(Commit commit);
 }
