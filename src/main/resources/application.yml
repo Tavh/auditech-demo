@@ -1,4 +1,6 @@
 server:
+  servlet:
+    context-path: /auditech-demo
   port: 5000
 
 spring:
