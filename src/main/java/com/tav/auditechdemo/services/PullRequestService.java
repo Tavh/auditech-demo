@@ -32,7 +32,7 @@ public class PullRequestService {
 
     public void createPullRequest(PullRequestEvent pullRequestEvent) {
         ResponseEntity<CommitWrapper[]> response = restTemplate.getForEntity(
-                URI.create(pullRequestEvent.getLinks().getCommitsUrl()),
+                URI.create(pullRequestEvent.getPullRequestPayload().getCommitsUrl()),
                 CommitWrapper[].class
         );
         PullRequestEntity pullRequestEntity = githubMapper.pullRequestPayloadToPullRequestEntity(pullRequestEvent).withCommits(new ArrayList<>());

@@ -11,7 +11,6 @@ import org.mapstruct.Mapping;
 public interface GithubMapper {
 
     @Mapping(target="title", source="pullRequestPayload.title")
-    @Mapping(target="action", source="pullRequestPayload.action")
     @Mapping(target="url", source="pullRequestPayload.url")
     @Mapping(target="githubId", source="pullRequestPayload.id")
     @Mapping(target="number", source="pullRequestPayload.number")

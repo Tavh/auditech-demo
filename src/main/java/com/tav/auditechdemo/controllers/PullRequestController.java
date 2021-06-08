@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(value = "*", allowCredentials = "true", allowedHeaders = "*",
+                methods = { RequestMethod.GET, RequestMethod.POST })
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("pull-request")

@@ -11,6 +11,4 @@ import lombok.NoArgsConstructor;
 public class PullRequestEvent {
     @JsonProperty("pull_request")
     private PullRequestPayload pullRequestPayload;
-    @JsonProperty("_links")
-    private Links links;
 }

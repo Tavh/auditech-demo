@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 
 public class NoCommitsFoundException extends ApplicationException {
 
-	public NoCommitsFoundException(String pullRequestNumber) {
+	public NoCommitsFoundException(int pullRequestNumber) {
 		super(ErrorCode.NO_COMMITS_FOUND,
 			  HttpStatus.NON_AUTHORITATIVE_INFORMATION,
 			  "No commits were found in PR number " + pullRequestNumber

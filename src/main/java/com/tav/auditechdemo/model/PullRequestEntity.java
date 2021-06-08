@@ -27,9 +27,7 @@ public class PullRequestEntity {
     @Column(name="url", nullable=false)
     private String url;
     @Column(name="number", nullable=false)
-    private String number;
-    @Column(name="action", nullable=false)
-    private String action;
+    private int number;
     @OneToMany(cascade=CascadeType.ALL)
     @Column(name="commits", nullable=false)
     private List<CommitEntity> commits;

@@ -10,9 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PullRequestPayload {
-    private String action;
     private String title;
     private String url;
     private long id;
-    private String number;
+    private long number;
+    @JsonProperty("commits_url")
+    private String commitsUrl;
 }
